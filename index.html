@@ -187,26 +187,41 @@ section[id]{scroll-margin-top:60px;}
 .lead-txt p+p{margin-top:22px;}
 
 .def{background:var(--paper);}
-.cond{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;background:var(--line);border-top:3px solid var(--red);}
-.cond-item{background:var(--paper);padding:var(--s4) var(--s3) var(--s4);transition:background .3s;}
-.cond-item:hover{background:#fff;}
-.cond-item .n{
-  display:block;font-size:var(--t-label);font-weight:800;letter-spacing:.18em;
-  color:var(--red);margin-bottom:var(--s2);
+.std-grid{display:grid;grid-template-columns:.78fr 1.22fr;gap:var(--s6);align-items:stretch;}
+.std-img{position:relative;}
+.std-img img{
+  width:100%;height:100%;min-height:520px;object-fit:cover;position:relative;z-index:2;
+  clip-path:polygon(0 0,100% 0,100% 94%,88% 100%,0 100%);
 }
-.cond-item b{display:block;font-size:var(--t-h4);font-weight:800;margin-bottom:var(--s1);line-height:1.5;}
-.cond-item p{font-size:var(--t-sm);color:var(--gray);line-height:1.75;}
-.svc{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s3);align-items:stretch;}
-.svc-card{background:var(--paper);border:none;transition:.35s;display:flex;flex-direction:column;}
+.std-img::before{
+  content:"";position:absolute;right:-18px;bottom:-18px;width:130px;height:130px;
+  background:var(--red);z-index:1;
+}
+.std-list{list-style:none;counter-reset:none;}
+.std-list li{
+  display:flex;gap:var(--s3);padding:var(--s3) 0;
+  border-bottom:1px solid var(--line);align-items:baseline;
+}
+.std-list li:first-child{padding-top:0;}
+.std-list li:last-child{border-bottom:none;padding-bottom:0;}
+.std-list span{
+  flex:none;font-size:var(--t-label);font-weight:800;letter-spacing:.16em;
+  color:var(--red);width:28px;
+}
+.std-list b{display:block;font-size:var(--t-h4);font-weight:800;margin-bottom:4px;}
+.std-list p{font-size:var(--t-sm);color:var(--gray);line-height:1.75;}
+
+.svc{display:grid;grid-template-columns:1fr 1fr;gap:var(--s3);align-items:stretch;}
+.svc-card{background:var(--paper);border:none;transition:.35s;display:grid;grid-template-columns:.92fr 1.08fr;align-items:stretch;}
 .svc-card:hover{transform:translateY(-8px);box-shadow:var(--shadow);background:#EDEEF0;}
-.svc-card .ph{position:relative;}
-.svc-card img{width:100%;height:242px;object-fit:cover;}
+.svc-card .ph{position:relative;height:100%;}
+.svc-card img{width:100%;height:100%;min-height:214px;object-fit:cover;}
 .svc-card .no{position:absolute;left:0;top:0;background:var(--red);color:#fff;
   font-size:13px;font-weight:700;letter-spacing:.08em;padding:8px 16px;
   clip-path:polygon(0 0,100% 0,100% 72%,88% 100%,0 100%);}
 .svc-body{padding:26px 24px 30px;flex:1;display:flex;flex-direction:column;}
 .svc-body h3{font-size:var(--t-h3);font-weight:800;margin-bottom:var(--s1);}
-.svc-body p{font-size:var(--t-body);color:var(--gray);line-height:1.8;margin-top:auto;}
+.svc-body p{font-size:var(--t-sm);color:var(--gray);line-height:1.8;}
 
 .applic-head{
   display:flex;align-items:baseline;justify-content:center;gap:var(--s2);
@@ -215,10 +230,15 @@ section[id]{scroll-margin-top:60px;}
 }
 .applic-head b{font-size:var(--t-h3);font-weight:800;letter-spacing:.01em;}
 .applic-head span{font-size:var(--t-body);color:var(--gray);}
-.applic{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s3);}
+.applic{
+  display:grid;grid-template-columns:1.6fr 1fr 1fr;
+  grid-template-rows:repeat(2,minmax(158px,1fr));gap:var(--s2);
+}
+.ap-item:nth-child(1){grid-row:1/3;}
+.ap-item:nth-child(4){grid-column:2/4;}
 .ap-item{position:relative;overflow:hidden;background:var(--ink);}
 .ap-item img{
-  width:100%;height:280px;object-fit:cover;opacity:.82;transition:.45s;
+  width:100%;height:100%;object-fit:cover;opacity:.82;transition:.45s;
   clip-path:polygon(0 0,100% 0,100% 88%,88% 100%,0 100%);
 }
 .ap-item:hover img{opacity:1;transform:scale(1.05);}
@@ -395,9 +415,14 @@ footer .fl i{font-style:normal;font-size:9px;letter-spacing:.18em;color:var(--re
   .nav-links a{display:block;padding:16px 32px;font-size:16px;border-bottom:none;}
   .nav-links a:hover{background:rgba(255,255,255,.06);border-bottom:none;}
   .nav-cta{margin-left:16px;}
-  .svc,.applic{grid-template-columns:1fr 1fr;}
-  .cond{grid-template-columns:repeat(3,1fr);}
-  .why-wrap{grid-template-columns:1fr;gap:var(--s4);}
+  .svc{grid-template-columns:1fr;}
+  .applic{grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,minmax(150px,1fr));}
+  .ap-item:nth-child(1){grid-row:1/2;grid-column:1/3;}
+  .ap-item:nth-child(4){grid-column:auto;}
+  .std-grid{grid-template-columns:1fr;gap:var(--s4);}
+  .std-img img{min-height:0;height:300px;}
+  .std-img::before{display:none;}
+    .why-wrap{grid-template-columns:1fr;gap:var(--s4);}
   .why-photo{height:400px;}
   .why-photo img{height:100%;}
   .why-photo::before{display:none;}
@@ -550,17 +575,24 @@ footer .fl i{font-style:normal;font-size:9px;letter-spacing:.18em;color:var(--re
 </section>
 <section class="def">
   <div class="wrap">
-    <div class="sec-head ctr rv">
-      <div class="en">OUR APPROACH</div>
-      <h2>防火填塞，不只是把洞補起來</h2>
-      <p class="say">真正的防火填塞，需要依照以下條件選擇合適的防火材料與施工方式：</p>
-    </div>
-    <div class="cond rv">
-      <div class="cond-item"><span class="n">01</span><b>貫穿物種類</b><p>電纜、金屬管、PVC 管或風管，材質不同對應的工法也不同。</p></div>
-      <div class="cond-item"><span class="n">02</span><b>孔洞尺寸</b><p>開孔大小決定填充方式與所需材料用量。</p></div>
-      <div class="cond-item"><span class="n">03</span><b>牆體／樓板結構</b><p>混凝土、輕隔間或帷幕牆，基材條件影響施作方式。</p></div>
-      <div class="cond-item"><span class="n">04</span><b>防火時效需求</b><p>依防火區劃要求，選用達到對應時效的系統。</p></div>
-      <div class="cond-item"><span class="n">05</span><b>對應認證工法</b><p>材料與工法需為經測試的完整系統，不可混搭。</p></div>
+    <div class="std-grid">
+      <div class="std-img rv">
+        <img src="images/std-bg.webp" alt="建築機電管線與風管配置" loading="lazy">
+      </div>
+      <div class="std-txt rv">
+        <div class="sec-head" style="margin-bottom:var(--s4)">
+          <div class="en">OUR APPROACH</div>
+          <h2>防火填塞，<br>不只是把洞補起來</h2>
+          <p class="say">真正的防火填塞，需要依照以下條件選擇合適的防火材料與施工方式：</p>
+        </div>
+        <ol class="std-list">
+          <li><span>01</span><div><b>貫穿物種類</b><p>電纜、金屬管、PVC 管或風管，材質不同對應的工法也不同。</p></div></li>
+          <li><span>02</span><div><b>孔洞尺寸</b><p>開孔大小決定填充方式與所需材料用量。</p></div></li>
+          <li><span>03</span><div><b>牆體／樓板結構</b><p>混凝土、輕隔間或帷幕牆，基材條件影響施作方式。</p></div></li>
+          <li><span>04</span><div><b>防火時效需求</b><p>依防火區劃要求，選用達到對應時效的系統。</p></div></li>
+          <li><span>05</span><div><b>對應認證工法</b><p>材料與工法需為經測試的完整系統，不可混搭。</p></div></li>
+        </ol>
+      </div>
     </div>
   </div>
 </section>
