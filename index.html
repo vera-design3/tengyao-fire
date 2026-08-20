@@ -187,24 +187,15 @@ section[id]{scroll-margin-top:60px;}
 .lead-txt p+p{margin-top:22px;}
 
 .def{background:var(--paper);}
-.def-grid{
-  display:grid;grid-template-columns:1fr 1fr;gap:0 var(--s6);align-items:center;
-  grid-template-areas:"img head" "img body";
+.cond{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;background:var(--line);border-top:3px solid var(--red);}
+.cond-item{background:var(--paper);padding:var(--s4) var(--s3) var(--s4);transition:background .3s;}
+.cond-item:hover{background:#fff;}
+.cond-item .n{
+  display:block;font-size:var(--t-label);font-weight:800;letter-spacing:.18em;
+  color:var(--red);margin-bottom:var(--s2);
 }
-.def-img{grid-area:img;}
-.def-head{grid-area:head;align-self:end;}
-.def-body{grid-area:body;align-self:start;}
-.def-img{position:relative;}
-.def-img img{width:100%;height:440px;object-fit:cover;clip-path:polygon(0 0,100% 0,100% 92%,92% 100%,0 100%);}
-.def-img::before{content:"";position:absolute;left:-18px;top:-18px;width:110px;height:110px;background:var(--red);z-index:1;}
-.def-img img{position:relative;z-index:2;}
-.cond{list-style:none;margin-top:22px;}
-.cond li{padding:13px 0 13px 38px;position:relative;border-bottom:1px solid var(--line);font-size:var(--t-body);}
-.cond li:last-child{border-bottom:none;}
-.cond li::before{content:"✓";position:absolute;left:0;top:14px;color:#fff;background:var(--red);
-  width:22px;height:22px;font-size:13px;display:flex;align-items:center;justify-content:center;
-  font-weight:800;clip-path:polygon(0 0,100% 0,100% 74%,74% 100%,0 100%);}
-
+.cond-item b{display:block;font-size:var(--t-h4);font-weight:800;margin-bottom:var(--s1);line-height:1.5;}
+.cond-item p{font-size:var(--t-sm);color:var(--gray);line-height:1.75;}
 .svc{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s3);align-items:stretch;}
 .svc-card{background:var(--paper);border:none;transition:.35s;display:flex;flex-direction:column;}
 .svc-card:hover{transform:translateY(-8px);box-shadow:var(--shadow);background:#EDEEF0;}
@@ -405,6 +396,7 @@ footer .fl i{font-style:normal;font-size:9px;letter-spacing:.18em;color:var(--re
   .nav-links a:hover{background:rgba(255,255,255,.06);border-bottom:none;}
   .nav-cta{margin-left:16px;}
   .svc,.applic{grid-template-columns:1fr 1fr;}
+  .cond{grid-template-columns:repeat(3,1fr);}
   .why-wrap{grid-template-columns:1fr;gap:var(--s4);}
   .why-photo{height:400px;}
   .why-photo img{height:100%;}
@@ -418,10 +410,7 @@ footer .fl i{font-style:normal;font-size:9px;letter-spacing:.18em;color:var(--re
   .tl-step .fig img{width:120px;height:120px;}
   .tl::before{display:none;}
   .risk-grid,.final-top{grid-template-columns:1fr;gap:36px;}
-  .def-grid{grid-template-columns:1fr;grid-template-areas:"head" "img" "body";gap:30px;}
-  .def-head,.def-body{align-self:auto;}
   .risk-grid img{height:320px;}
-  .def-img img{height:340px;}
 }
 @media (max-width:680px){
   .wrap{padding:0 20px;}
@@ -470,12 +459,11 @@ footer .fl i{font-style:normal;font-size:9px;letter-spacing:.18em;color:var(--re
   .tl-step .fig{width:112px;height:112px;margin:0;flex:none;}
   .tl-step .fig img{width:86px;height:86px;}
   .sec-head{margin-bottom:34px;}
-  .def-img img,.ba img,.risk-grid img{height:230px;}
+  .ba img,.risk-grid img{height:230px;}
   .risk-img::before,.risk-img::after{display:none;}
   .why-photo::before{display:none;}
   .why-need .sec-head,.why-need .lead-txt{text-align:center;}
   .lead-txt p{font-size:16px;line-height:1.95;}
-  .def-img::before{display:none;}
   .case-h{padding:var(--s3) var(--s3) var(--s2);gap:var(--s1);flex-direction:column;}
   .case-h .tag{padding-top:0;}
   .case-h b{font-size:var(--t-h4);}
@@ -562,28 +550,18 @@ footer .fl i{font-style:normal;font-size:9px;letter-spacing:.18em;color:var(--re
 </section>
 <section class="def">
   <div class="wrap">
-    <div class="def-grid">
-      <div class="def-img rv">
-        <img src="images/solution-grid.webp" alt="防火填塞於各種管線貫穿情境的施作示意" loading="lazy">
-      </div>
-      <div class="def-head rv">
-        <div class="sec-head" style="margin-bottom:0">
-          <div class="en">OUR APPROACH</div>
-          <h2>防火填塞，<br>不只是把洞補起來</h2>
-          <p class="say">真正的防火填塞，需要依照以下條件選擇合適的防火材料與施工方式：</p>
-        </div>
-      </div>
-      <div class="def-body rv">
-        <ul class="cond">
-          <li>貫穿物種類</li>
-          <li>孔洞尺寸</li>
-          <li>牆體／樓板結構</li>
-          <li>防火時效需求</li>
-          <li>對應認證工法</li>
-        </ul>
-      </div>
+    <div class="sec-head ctr rv">
+      <div class="en">OUR APPROACH</div>
+      <h2>防火填塞，不只是把洞補起來</h2>
+      <p class="say">真正的防火填塞，需要依照以下條件選擇合適的防火材料與施工方式：</p>
     </div>
-
+    <div class="cond rv">
+      <div class="cond-item"><span class="n">01</span><b>貫穿物種類</b><p>電纜、金屬管、PVC 管或風管，材質不同對應的工法也不同。</p></div>
+      <div class="cond-item"><span class="n">02</span><b>孔洞尺寸</b><p>開孔大小決定填充方式與所需材料用量。</p></div>
+      <div class="cond-item"><span class="n">03</span><b>牆體／樓板結構</b><p>混凝土、輕隔間或帷幕牆，基材條件影響施作方式。</p></div>
+      <div class="cond-item"><span class="n">04</span><b>防火時效需求</b><p>依防火區劃要求，選用達到對應時效的系統。</p></div>
+      <div class="cond-item"><span class="n">05</span><b>對應認證工法</b><p>材料與工法需為經測試的完整系統，不可混搭。</p></div>
+    </div>
   </div>
 </section>
 <section id="svc">
@@ -595,17 +573,17 @@ footer .fl i{font-style:normal;font-size:9px;letter-spacing:.18em;color:var(--re
     <div class="svc">
       <div class="svc-card rv">
         <div class="ph">
-          <img src="images/work-08.jpg" alt="管線穿牆防火封堵" loading="lazy">
+          <img src="images/work-08.webp" alt="管線穿牆處防火封堵" loading="lazy">
           <span class="no">牆面貫穿</span>
         </div>
         <div class="svc-body">
           <h3>管線穿牆填塞</h3>
-          <p>電纜、金屬管、PVC 管等管線貫穿處。</p>
+          <p>電纜、金屬管、PVC 管等管線貫穿牆面的位置。</p>
         </div>
       </div>
       <div class="svc-card rv">
         <div class="ph">
-          <img src="images/work-06.jpg" alt="樓板穿孔防火填塞" loading="lazy">
+          <img src="images/work-12.webp" alt="管線穿越樓板的貫穿位置" loading="lazy">
           <span class="no">樓板貫穿</span>
         </div>
         <div class="svc-body">
@@ -615,22 +593,22 @@ footer .fl i{font-style:normal;font-size:9px;letter-spacing:.18em;color:var(--re
       </div>
       <div class="svc-card rv">
         <div class="ph">
-          <img src="images/work-01.jpg" alt="電纜線槽防火填塞" loading="lazy">
+          <img src="images/work-01.jpg" alt="電纜橋架與線槽防火填塞" loading="lazy">
           <span class="no">橋架線槽</span>
         </div>
         <div class="svc-body">
-          <h3>線槽／電纜填塞</h3>
-          <p>電纜橋架、線槽與多管線集中區域。</p>
+          <h3>留線槽</h3>
+          <p>電纜橋架、線槽與多管線集中的區域。</p>
         </div>
       </div>
       <div class="svc-card rv">
         <div class="ph">
-          <img src="images/work-07.jpg" alt="設備周邊防火封堵" loading="lazy">
-          <span class="no">設備周邊</span>
+          <img src="images/work-11.webp" alt="保溫管貫穿樓板防火封堵完成" loading="lazy">
+          <span class="no">保溫管線</span>
         </div>
         <div class="svc-body">
-          <h3>設備周邊封堵</h3>
-          <p>設備管路與建築構造之間的防火封堵。</p>
+          <h3>保溫管</h3>
+          <p>保溫材包覆的管線貫穿處，需搭配對應工法封堵。</p>
         </div>
       </div>
     </div>
