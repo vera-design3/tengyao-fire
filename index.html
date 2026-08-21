@@ -410,7 +410,6 @@ footer .fl i{font-style:normal;font-size:9px;letter-spacing:.18em;color:var(--re
   .nav-links a{display:block;padding:16px 32px;font-size:16px;border-bottom:none;}
   .nav-links a:hover{background:rgba(255,255,255,.06);border-bottom:none;}
   .nav-cta{margin-left:16px;}
-  .svc{grid-template-columns:1fr;}
   .applic{grid-template-columns:1fr 1fr;}
   .std-grid{grid-template-columns:1fr;gap:var(--s4);}
   .std-img{display:none;}
@@ -428,6 +427,13 @@ footer .fl i{font-style:normal;font-size:9px;letter-spacing:.18em;color:var(--re
   .tl::before{display:none;}
   .risk-grid,.final-top{grid-template-columns:1fr;gap:36px;}
   .risk-grid img{height:320px;}
+}
+
+/* 平板直向：服務卡兩欄擠了才降單欄，1080~901 維持兩欄 */
+@media (max-width:900px){
+  .svc{grid-template-columns:1fr;}
+  .why-photo{height:360px;}
+  .ba img{height:250px;}
 }
 @media (max-width:680px){
   .wrap{padding:0 20px;}
@@ -450,7 +456,10 @@ footer .fl i{font-style:normal;font-size:9px;letter-spacing:.18em;color:var(--re
   .hero-in{padding-top:96px;padding-bottom:86px;}
   .hero .kicker{margin-bottom:20px;}
   .hero h1{line-height:1.42;margin-bottom:18px;}
-  .svc,.ba{grid-template-columns:1fr;}
+  .svc-card{grid-template-columns:1fr;}
+  .svc-card .ph{height:auto;}
+  .svc-card img{height:206px;min-height:0;}
+  .svc-body{padding:20px 20px 26px;}
   .why-photo{height:300px;}
   .why-photo img{height:100%;}
   .why-photo figcaption{padding:var(--s5) var(--s3) var(--s2);font-size:var(--t-body);}
@@ -476,7 +485,7 @@ footer .fl i{font-style:normal;font-size:9px;letter-spacing:.18em;color:var(--re
   .tl-step .fig{width:112px;height:112px;margin:0;flex:none;}
   .tl-step .fig img{width:86px;height:86px;}
   .sec-head{margin-bottom:34px;}
-  .ba img,.risk-grid img{height:230px;}
+  .risk-grid img{height:230px;}
   .risk-img::before,.risk-img::after{display:none;}
   .why-photo::before{display:none;}
   .why-need .sec-head,.why-need .lead-txt{text-align:center;}
@@ -484,8 +493,29 @@ footer .fl i{font-style:normal;font-size:9px;letter-spacing:.18em;color:var(--re
   .case-h{padding:var(--s3) var(--s3) var(--s2);gap:var(--s1);flex-direction:column;}
   .case-h .tag{padding-top:0;}
   .case-h b{font-size:var(--t-h4);}
-  .ba{gap:0;background:transparent;}
-  .ba img{height:230px;}
+  .ba img{height:158px;}
+  .ba figcaption{padding:6px 12px;font-size:12px;letter-spacing:.06em;}
+}
+
+/* 窄螢幕（iPhone SE 等 ≤400px）：兩欄卡片文字擠成兩三字一行，改單欄 */
+@media (max-width:400px){
+  .why-grid{grid-template-columns:1fr;gap:var(--s2);}
+  .why-card{padding:var(--s3) var(--s3) var(--s3);}
+  .why-card h3{font-size:17px;}
+  .why-card p{font-size:14px;}
+  .ba img{height:132px;}
+  .ba figcaption{padding:5px 9px;font-size:11px;letter-spacing:.04em;}
+  .case-h{padding:var(--s3) 20px var(--s2);}
+  .t-item{padding:24px 12px 22px;}
+  .t-item b{font-size:29px;}
+  .t-item span{font-size:12.5px;}
+}
+
+/* 橫拿手機：視窗高度不足時 Hero 不鎖滿高，讓標題與按鈕排得開 */
+@media (orientation:landscape) and (max-height:560px){
+  .hero{height:auto;min-height:0;}
+  .hero-in{padding-top:100px;padding-bottom:118px;}
+  .hero .lead,.hero .sub{max-width:640px;}
 }
 </style>
 </head>
@@ -618,7 +648,7 @@ footer .fl i{font-style:normal;font-size:9px;letter-spacing:.18em;color:var(--re
       <div class="svc-card rv">
         <div class="ph">
           <img src="images/work-01.jpg" alt="電纜橋架與線槽防火填塞" loading="lazy">
-          <span class="no">電纜橋架</span>
+          <span class="no">線槽</span>
         </div>
         <div class="svc-body">
           <h3>線槽</h3>
