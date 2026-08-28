@@ -51,3 +51,15 @@ Google Tag Manager 容器 `GTM-5T2LQNXB`，head 內一段 script、body 開頭�
 ### 圖片
 
 以 WebP 為主，`og-image.jpg` 保留 JPG（部分社群爬蟲對 WebP 支援不穩）。流程圖示 `step-1~6` 顯示尺寸僅 142px，來源檔已壓到 300px，勿再換回大圖。
+
+### CDN（Cloudflare）
+
+2026-08-28 起 DNS 與流量走 Cloudflare（免費方案）。網域仍註冊在 GoDaddy，只是名稱伺服器改為 `elly.ns.cloudflare.com` / `felipe.ns.cloudflare.com`。
+
+設定重點：
+- SSL/TLS 加密模式 **Full**（不可用 Flexible，會無限跳轉；也不可用 Full strict，GitHub 對 www 沒有對應憑證）
+- **Always Use HTTPS** 由 Cloudflare 負責（GitHub Pages 端的 https_enforced 因憑證卡住而無法開啟）
+- Universal SSL 憑證涵蓋 `tengyue.tw` 與 `*.tengyue.tw`，www 因此可用
+- DNS 記錄改在 Cloudflare 管理，GoDaddy 的 DNS 記錄頁已停用
+
+**部署後記得清快取**：push 到 main 後，Cloudflare 可能仍供應舊版本。到 Cloudflare → Caching → Configuration → Purge Everything。
